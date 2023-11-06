@@ -45,10 +45,12 @@ notesApi.post('/api/notes', (req, res) =>{
         // add newNote to end of note array
         notes.push(newNote);
         // write the updated (stringified) array to the db.json file enconded as utf-8
-        fs.writeFile('./db/db.json', JSON.stringify(notes), 'utf-8');
-        // return a response with the new item that was created
-        console.log(newNote);
-        return res.json(newNote);
+        return fs.writeFile('./db/db.json', JSON.stringify(notes), 'utf-8')
+        // return a response with the new item that was created (must wait for async writeFile)
+        .then(() => {
+            console.log(newNote);
+            return res.json(newNote);
+        });
     })
     // error handling:
     .catch((err) => {
