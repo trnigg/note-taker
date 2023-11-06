@@ -15,6 +15,7 @@ notesApi.get('/api/notes', (req, res) => {
             // parse JSON data
             let notes = JSON.parse(data);
             // return JSON data
+            console.log(`GET request successful.`)
             return res.json(notes);
         })
         // error handling:
@@ -48,7 +49,7 @@ notesApi.post('/api/notes', (req, res) =>{
         return fs.writeFile('./db/db.json', JSON.stringify(notes), 'utf-8')
         // return a response with the new item that was created (must wait for async writeFile)
         .then(() => {
-            console.log(newNote);
+            console.log(`New note created:`, newNote);
             return res.json(newNote);
         });
     })
@@ -83,7 +84,7 @@ notesApi.delete('/api/notes/:id', (req, res) => {
                 return res.json({ message : "Note successfully deleted" });
             });
         } else {
-            console.error(`Note ${noteId} not found.`, err);
+            console.error(`Note ${noteId} not found.`);
             // Status 404 = 'Not Found'
             return res.status(404).json({ error : `Note ${noteId} not found.` });
         };
