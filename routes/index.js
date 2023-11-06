@@ -15,7 +15,6 @@ notesApi.get('/api/notes', (req, res) => {
             // parse JSON data
             let notes = JSON.parse(data);
             // return JSON data
-            console.log(`GET request successful.`)
             return res.json(notes);
         })
         // error handling:
@@ -49,7 +48,6 @@ notesApi.post('/api/notes', (req, res) =>{
         return fs.writeFile('./db/db.json', JSON.stringify(notes), 'utf-8')
         // return a response with the new item that was created (must wait for async writeFile)
         .then(() => {
-            console.log(`New note created:`, newNote);
             return res.json(newNote);
         });
     })
