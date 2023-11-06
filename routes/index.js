@@ -15,6 +15,7 @@ notesApi.get('/api/notes', (req, res) => {
             // parse JSON data
             let notes = JSON.parse(data);
             // return JSON data
+            console.log(`GET request successful.`)
             return res.json(notes);
         })
         // error handling:
@@ -48,7 +49,7 @@ notesApi.post('/api/notes', (req, res) =>{
         return fs.writeFile('./db/db.json', JSON.stringify(notes), 'utf-8')
         // return a response with the new item that was created (must wait for async writeFile)
         .then(() => {
-            console.log(newNote);
+            console.log(`New note created:`, newNote);
             return res.json(newNote);
         });
     })
@@ -57,9 +58,43 @@ notesApi.post('/api/notes', (req, res) =>{
         //console log the error
         console.error(err);
         // return response status of 500 and a JSON object with key of 'error' and value of message matching 500 (Intern. Serv. Err)
-        return res.status(500).json({ error : 'Internal Server Error' });
+        return res.status(500).json({ error : "Internal Server Error" });
     });
 });
 
+notesApi.delete('/api/notes/:id', (req, res) => {
+    // get ID from request
+    const noteId = req.params.id;
+    // read db.json
+    fs.readFile('./db/db.json', 'utf-8')
+    .then((data) => {
+        // parse JSON data
+        let notes = JSON.parse(data);
+        // find index of note where note.id strictly matches id in req.params
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+        let noteIndex = notes.findIndex((note) => note.id === noteId)
+        // if a matching index is found, splice it (remove it from array)
+        if (noteIndex !== -1) { // -1 is returned if findIndex does not find a match
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+            notes.splice(noteIndex, 1); // noteIndex is the start and '1' is the deleteCount
+            fs.writeFile('./db/db.json', JSON.stringify(notes), 'utf-8')
+        // return a response with the new item that was created (must wait for async writeFile)
+            .then(() => {
+                console.log('Note successfully deleted.');
+                return res.json({ message : "Note successfully deleted" });
+            });
+        } else {
+            console.error(`Note ${noteId} not found.`);
+            // Status 404 = 'Not Found'
+            return res.status(404).json({ error : `Note ${noteId} not found.` });
+        };
+    })
+    .catch((err) => {
+        //console log the error
+        console.error(err);
+        // return response status of 500 and a JSON object with key of 'error' and value of message matching 500 (Intern. Serv. Err)
+        return res.status(500).json({ error : 'Internal Server Error' });
+    });
+});
 
 module.exports = notesApi;
