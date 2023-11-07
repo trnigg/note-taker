@@ -37,3 +37,6 @@ To use the application:
 - The entirety of the front-end consists of starter-code that was supplied as part of coursework.  
 
 - Please see the [Description](#description) section for an overview of 3rd-party packages/modules used in this app.  
+
+## Questions
+- For any questions, issues or feedback, please reach out to me on GitHub at [trnigg](https://github.com/trnigg/).
