@@ -109,8 +109,12 @@ const handleNoteView = (e) => {
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
+// [trnigg] - renderActiveNote button handles the clearing of the input fields and is a call back on the clearBtn event listener;
+// [cont.] however, it doesn't seem to be resetting .value on the first item.
 const handleNewNoteView = (e) => {
   activeNote = {};
+  noteTitle.value = '';
+  noteText.value = '';
   show(clearBtn);
   renderActiveNote();
 };
