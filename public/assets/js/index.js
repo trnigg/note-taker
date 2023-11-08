@@ -113,6 +113,7 @@ const handleNoteView = (e) => {
 // [cont.] however, it doesn't seem to be resetting .value on the first item.
 const handleNewNoteView = (e) => {
   activeNote = {};
+  // [trnigg - adding .value clear here seems to hotfix the issue without breaking anything]
   noteTitle.value = '';
   noteText.value = '';
   show(clearBtn);
