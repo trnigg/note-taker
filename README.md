@@ -14,16 +14,16 @@ A simple web-app to take and store personal notes that persist upon reload and a
 ## Usage
 To use the application:
 1. Follow the link above, and you will land on the homepage:  
-![Screenshot showing a simple landing page with a 'Get Started' button in the center.](./public/assets/screenshots/landing-page.png)
-2. Click 'Get Started', and you will be redirected to the [/notes](https://my-first-note-taker-01a67cc2e65b.herokuapp.com/notes) page. If no notes have been created yet, the page will look like this:  
-![Screenshot showing page with two columns and fields where note information can be entered.](./public/assets/screenshots/getting-started.png)
+![Screenshot showing a simple landing page with a 'Get Started' button in the center.](./public/assets/screenshots/landing-page.png?)
+2. Click 'Get Started', and you will be redirected to the [/notes](https://my-first-note-taker-01a67cc2e65b.herokuapp.com/notes?) page. If no notes have been created yet, the page will look like this:  
+![Screenshot showing page with two columns and fields where note information can be entered.](./public/assets/screenshots/getting-started.png?)
     - If notes already exist, you will see them in the left-hand column; see screenshots below for reference.
 3. To add a new note, type the title and text of your note in the respective 'Note Title' and 'Note Text' fields. Two new buttons will appear in the top right:  
-![Screenshot representing a note being entered, with Save and Clear buttons now visible in the top-right.](./public/assets/screenshots/save-note.png)  
+![Screenshot representing a note being entered, with Save and Clear buttons now visible in the top-right.](./public/assets/screenshots/save-note.png?)  
     - Click 'Clear Form' to clear your entry and start again, or;
     - Click 'Save Note' to save your note. Tt will now appear in the column on the left (see screenshot below).
 4. Click on an existing note to see the contents of it on the right-hand side:  
-![Annotated screenshot depicting a saved note on the left being clicked and data being shown on the right, with a 'New Note' button top-right.](./public/assets/screenshots/saved-note.png)
+![Annotated screenshot depicting a saved note on the left being clicked and data being shown on the right, with a 'New Note' button top-right.](./public/assets/screenshots/saved-note.png?)
 5. To add an additional note, click on the 'New Note' button in the top-right (visible in the screenshot above) and repeat Step 3.
 6. To delete a note, click on the red 'Trash-Bin' icon next to the note you wish to delete.  
 
